@@ -1,6 +1,7 @@
 import React from 'react';
 import CityInput from './components/cityInput';
 import CityWeather from './components/cityWeather';
+import './App.css';
 
 import './App.css';
 
@@ -8,7 +9,7 @@ function App() {
   const [city, setCity] = React.useState("");
   const [cityWeather, setCityWeather] = React.useState({});
   const fetchCityWeather = ()=> {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ce2fb5a45dbb2f9c94ca6c8e1896aff7`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ce2fb5a45dbb2f9c94ca6c8e1896aff7`)
     .then((res) => res.json())
     .then((result)=>{
       console.log("result id ", result);
@@ -19,12 +20,14 @@ function App() {
  
   return ( 
   <>
+  <div className="weather">
   <CityInput 
   city={city} 
   setCity={setCity} 
   fetchCityWeather={fetchCityWeather}/>
   <CityWeather
   cityWeather={cityWeather} />
+  </div>
   </>
   );
 }
